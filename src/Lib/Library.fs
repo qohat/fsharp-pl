@@ -10,6 +10,6 @@ module MyMath =
     let private square x = x * x
 
     let squaresOfOdds xs = 
-        xs
+        xs 
         |> Seq.filter isOdd
         |> Seq.map square
