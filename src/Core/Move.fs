@@ -1,4 +1,4 @@
-namespace MathService
+namespace Main
 
 module Move =
 

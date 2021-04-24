@@ -1,8 +1,8 @@
-module MathService.Tests
+module Main.Tests
 
 open System
 open NUnit.Framework
-open MathService
+open Main
 
 [<TestFixture>]
 type TestClass() =

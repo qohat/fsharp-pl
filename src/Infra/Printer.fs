@@ -1,4 +1,4 @@
-namespace MathService
+namespace Main
 
 type Effect<'result> =
     | Log of string * (unit -> Effect<'result>)

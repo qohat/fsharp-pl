@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\MathService\MathService.fsproj" />
+    <ProjectReference Include="..\..\src\Main\Main.fsproj" />
   </ItemGroup>
 
 </Project>
