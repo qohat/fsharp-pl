@@ -16,7 +16,7 @@
   <ItemGroup>
     <Compile Include="UnitTest1.fs" />
     <Compile Include="Move.fs" />
-    <Compile Include="Program.fs" />
+    <Compile Include="Files.fs" />
   </ItemGroup>
 
   <ItemGroup>
