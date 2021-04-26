@@ -1,6 +1,4 @@
-namespace Main
-
-module Move =
+module Move
 
     type Id = Id of string
 
@@ -15,9 +13,9 @@ module Move =
            | West
 
     type Location = { x : X; y : Y; dir: Direction}
-    
+
     type Shipper = Shipper of id: Id * locations: List<Location>
-    
+
     let private turnRight (l: Location) : Location =
         match l with
         | { Location.x = _; Location.y = _; Location.dir = dir } when dir = North -> { l with dir = East}

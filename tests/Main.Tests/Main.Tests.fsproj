@@ -14,9 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="UnitTest1.fs" />
     <Compile Include="Move.fs" />
     <Compile Include="Files.fs" />
+    <Compile Include="Adapter.fs" />
+    <Compile Include="Service.fs" />
   </ItemGroup>
 
   <ItemGroup>
