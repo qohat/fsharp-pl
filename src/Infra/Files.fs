@@ -5,8 +5,8 @@ open System.IO
 module Files =
 
     type Folder = { path : string } 
-    type File = {filename: string; containingFolder: Folder; lines : string array}
-    type FilePath = { path : string }
+    and File = {filename: string; containingFolder: Folder; lines : string array}
+    and FilePath = { path : string }
 
     let private toFile(fileName: string, folder: Folder): File =
         {filename = fileName; containingFolder = folder; lines = File.ReadAllLines(fileName)}
