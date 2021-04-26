@@ -1,4 +1,4 @@
-module Main.InfraTests
+module ServiceTest
 
 open NUnit.Framework
 open Files

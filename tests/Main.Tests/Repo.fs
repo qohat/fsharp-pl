@@ -1,4 +1,4 @@
-module Main.InfraTests
+module RepoTest
 
 open NUnit.Framework
 open Files
