@@ -5,6 +5,5 @@
   <ItemGroup>
     <Compile Include="..\Infra\Files.fs" />
     <Compile Include="..\Core\Move.fs" />
-    <Compile Include="..\Lib\Library.fs" />
   </ItemGroup>
 </Project>
