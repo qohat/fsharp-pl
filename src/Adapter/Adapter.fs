@@ -1,9 +1,10 @@
 module Adapter
 
 open Move
+open Files
 
 type Repository = 
-    abstract member FindAll : unit -> Shipper list
+    abstract member FindAll : Shipper list
     abstract member Save : Shipper -> unit
 
 type MyRepository() =
@@ -11,5 +12,5 @@ type MyRepository() =
     member this.Save s = (this :> Repository).Save(s)
 
     interface Repository with
-        member this.FindAll = List.empty<'Shipper>
+        member this.FindAll = List.empty<Shipper>
         member this.Save s = ()

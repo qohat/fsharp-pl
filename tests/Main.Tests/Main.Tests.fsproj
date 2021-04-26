@@ -17,6 +17,7 @@
     <Compile Include="Move.fs" />
     <Compile Include="Files.fs" />
     <Compile Include="Adapter.fs" />
+    <Compile Include="Config.fs" />
     <Compile Include="Service.fs" />
   </ItemGroup>
 
