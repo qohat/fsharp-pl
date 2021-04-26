@@ -6,6 +6,7 @@
     <Compile Include="..\Infra\Files.fs" />
     <Compile Include="..\Core\Move.fs" />
     <Compile Include="..\Adapter\Adapter.fs" />
+    <Compile Include="..\Adapter\Config.fs" />
     <Compile Include="..\Application\Service.fs" />
   </ItemGroup>
 </Project>
