@@ -3,14 +3,14 @@ module Files
 open System.IO
 
     type Folder = { path : string } 
-    and File = { filename: string; containingFolder: Folder; lines : string array }
+    and File = { filename: string; containingFolder: Folder; lines : string list }
     and FilePath = { path : string }
 
     let private toFile(fileName: string, folder: Folder): File =
-        {filename = fileName; containingFolder = folder; lines = File.ReadAllLines(fileName)}
+        {filename = fileName; containingFolder = folder; lines = File.ReadAllLines(fileName) |> List.ofArray}
 
     type FileRW =
-        abstract member Read : FilePath -> File array
+        abstract member Read : FilePath -> File list
         abstract member Write : File -> unit
         abstract member Create : Folder -> FilePath
 
@@ -22,6 +22,7 @@ open System.IO
         interface FileRW with
             member this.Read fp = 
                     Array.map (fun elem -> toFile(elem, {path = fp.path})) (Directory.GetFiles(fp.path))
+                    |> List.ofArray
 
             member this.Create folder = 
                 if Directory.Exists(folder.path) then { path = folder.path } 
