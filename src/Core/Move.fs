@@ -1,6 +1,6 @@
 module Move
 
-    type Id = Id of string
+    type Id = { id : string }
 
     type X = { _x : int }
 
@@ -14,7 +14,7 @@ module Move
 
     type Location = { x : X; y : Y; dir: Direction}
 
-    type Shipper = Shipper of id: Id * locations: List<Location>
+    type Shipper = Shipper of id: Id * locations: Location list
 
     let private turnRight (l: Location) : Location =
         match l with
@@ -47,7 +47,7 @@ module Move
         | 'I' -> turnLeft l
         | _ -> l
 
-    let rec run (commands: List<char>) (l: Location) : Location =
+    let rec run (commands: char list) (l: Location) : Location =
         match commands with
         | []    -> l
         | h :: t  -> run t (move h l)
