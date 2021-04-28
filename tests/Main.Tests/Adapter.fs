@@ -1,13 +1,23 @@
 module AdapterTest
 
 open NUnit.Framework
-open Files
+open Adapter
+open Move
 
 [<TestFixture>]
 type TestClass() =
 
     [<Test>]
-    member this.TestFilesRead() = 
-        let rw = new MyFileRW()
-        let files = rw.Read({path = "/home/quziel/Repos/files/input/"})
+    member this.TestFindAll() = 
+        let repo = new MyRepository()
+        let files = repo.FindAll
         Assert.That(files.Length, Is.EqualTo(3))
+
+    [<Test>]
+    member this.TestSave() = 
+        let repo = new MyRepository()
+        let shipper = {
+            id = {id = "/home/quziel/Repos/files/output/in010.txt"}; 
+            locations = List.map (fun line -> toLocation line) ["AAIDDDA"; "AAIDDDA"; "AAIDDAA"]
+          }
+        repo.Save shipper
