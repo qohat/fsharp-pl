@@ -14,7 +14,7 @@ module Move
 
     type Location = { x : X; y : Y; dir: Direction}
 
-    type Shipper = Shipper of id: Id * locations: Location list
+    type Shipper = { id: Id; locations: Location list }
 
     let private turnRight (l: Location) : Location =
         match l with
