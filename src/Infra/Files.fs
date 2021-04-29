@@ -1,6 +1,7 @@
 module Files
 
 open System.IO
+open System.Text
 
     type Folder = { path : string } 
     and File = { filename: string; containingFolder: Folder; lines : string list }
@@ -32,7 +33,7 @@ open System.IO
 
             member this.Write file = 
                 this.Create(file.containingFolder)
-                |> fun _ -> File.WriteAllLines(file.filename, file.lines)
+                |> fun _ -> File.WriteAllLines(file.filename, file.lines, Encoding.UTF8)
 
            
                 

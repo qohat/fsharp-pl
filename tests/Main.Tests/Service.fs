@@ -1,13 +1,13 @@
 module ServiceTest
 
 open NUnit.Framework
-open Files
+open Service
 
 [<TestFixture>]
 type TestClass() =
 
     [<Test>]
-    member this.TestFilesRead() = 
-        let rw = new MyFileRW()
-        let files = rw.Read({path = "/home/quziel/Repos/files/input/"})
-        Assert.That(files.Length, Is.EqualTo(3))
+    member this.TestExecute() = 
+        new MyService()
+        |> fun serv -> serv.Execute
+        |> List.fold (fun _ _ -> ()) ()

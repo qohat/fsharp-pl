@@ -38,6 +38,5 @@ type MyRepository() =
             
         member this.Save s = 
             let conf = getConfig
-            let file = toFile s conf
             new MyFileRW()
-            |> fun fRW -> fRW.Write file
+            |> fun fRW -> fRW.Write (toFile s conf)
