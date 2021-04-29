@@ -11,13 +11,13 @@ type TestClass() =
     member this.TestFindAll() = 
         let repo = new MyRepository()
         let files = repo.FindAll
-        Assert.That(files.Length, Is.EqualTo(3))
+        Assert.That(files.Length, Is.EqualTo(2))
 
-    [<Test>]
+    (*[<Test>]
     member this.TestSave() = 
         let repo = new MyRepository()
         let shipper = {
             id = {id = "/home/quziel/Repos/files/output/in010.txt"}; 
-            locations = List.map (fun line -> toLocation line) ["AAIDDDA"; "AAIDDDA"; "AAIDDAA"]
+            locations = List.map (fun line -> toLocation line) ["AAAIDA"; "AAIDDDA"; "AAIDDAA"]
           }
-        repo.Save shipper
+        repo.Save shipper*)

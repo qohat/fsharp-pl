@@ -2,19 +2,19 @@ module Move
 
     type Id = { id : string }
 
-    type X = { _x : int }
+    and X = { _x : int }
 
-    type Y = { _y : int }
+    and Y = { _y : int }
 
-    type Direction = 
+    and Direction = 
            | North
            | South
            | East
            | West
 
-    type Location = { x : X; y : Y; dir: Direction}
+    and Location = { x : X; y : Y; dir: Direction}
 
-    type Shipper = { id: Id; locations: Location list }
+    and Shipper = { id: Id; locations: Location list }
 
     let private turnRight (l: Location) : Location =
         match l with
