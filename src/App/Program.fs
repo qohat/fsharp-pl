@@ -3,7 +3,6 @@ open Service
 
 [<EntryPoint>]
 let main args =
-    printfn "Running program"
-    new MyService() |> fun serv -> serv.Execute
-    // Return 0. This indicates success.
+    printfn "Running program..."
+    new MyService() |> fun serv -> serv.Execute |> fun _ -> printfn "Program executed successfully !!"
     0
