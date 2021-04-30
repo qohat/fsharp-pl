@@ -1,6 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>fsharp_pl</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\Infra\Files.fs" />
@@ -8,5 +10,6 @@
     <Compile Include="..\Adapter\Config.fs" />
     <Compile Include="..\Adapter\Adapter.fs" />
     <Compile Include="..\Application\Service.fs" />
+    <Compile Include="Program.fs" />
   </ItemGroup>
 </Project>

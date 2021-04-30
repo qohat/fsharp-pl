@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9955C18E-DB19-4EB0-B92B-1DFC8475AB62}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Main", "src\Main\Main.fsproj", "{788E7F30-5B3F-493D-8444-1E579C4EF93C}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "App", "src\App\App.fsproj", "{788E7F30-5B3F-493D-8444-1E579C4EF93C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{EBD31763-C478-4D12-8BDC-FBA5C6853483}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Main.Tests", "tests\Main.Tests\Main.Tests.fsproj", "{1563BDD3-1F79-4EDF-AEEC-541E187CAEF7}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "App.Tests", "tests\App.Tests\App.Tests.fsproj", "{1563BDD3-1F79-4EDF-AEEC-541E187CAEF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

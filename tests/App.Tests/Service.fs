@@ -10,4 +10,3 @@ type TestClass() =
     member this.TestExecute() = 
         new MyService()
         |> fun serv -> serv.Execute
-        |> List.fold (fun _ _ -> ()) ()
