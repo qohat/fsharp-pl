@@ -17,7 +17,7 @@ type TestClass() =
     member this.TestSave() = 
         let repo = new MyRepository()
         let shipper = {
-            id = {id = "/home/quziel/Repos/files/output/in010.txt"}; 
+            id = {id = "in010.txt"}; 
             locations = List.map (fun line -> toLocation line) ["AAAIDA"; "AAIDDDA"; "AAIDDAA"]
           }
         repo.Save shipper*)

@@ -7,8 +7,8 @@ open System.Text
     and File = { filename: string; containingFolder: Folder; lines : string list }
     and FilePath = { path : string }
 
-    let private toFile(fileName: string, folder: Folder): File =
-        {filename = fileName; containingFolder = folder; lines = File.ReadAllLines(fileName) |> List.ofArray}
+    let private toFile(filePath: FilePath) (folder: Folder): File =
+        {filename = Path.GetFileName(filePath.path); containingFolder = folder; lines = File.ReadAllLines(filePath.path) |> List.ofArray}
 
     type FileRW =
         abstract member Read : FilePath -> File list
@@ -22,7 +22,7 @@ open System.Text
 
         interface FileRW with
             member this.Read fp = 
-                    Array.map (fun elem -> toFile(elem, {path = fp.path})) (Directory.GetFiles(fp.path))
+                    Array.map (fun elem -> toFile {path = elem} {path = fp.path}) (Directory.GetFiles(fp.path))
                     |> List.ofArray
 
             member this.Create folder = 
@@ -33,7 +33,7 @@ open System.Text
 
             member this.Write file = 
                 this.Create(file.containingFolder)
-                |> fun _ -> File.WriteAllLines(file.filename, file.lines, Encoding.UTF8)
+                |> fun _ -> File.WriteAllLines($"{file.containingFolder.path}/{file.filename}", file.lines, Encoding.UTF8)
 
            
                 
