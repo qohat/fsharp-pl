@@ -28,8 +28,9 @@ dotnet test
 ```
 
 ## Run the app 📦
-Inside the root directory change to directory cd src/App
+Inside the root directory run
 ```
+cd src/App
 dotnet run
 ```
 
