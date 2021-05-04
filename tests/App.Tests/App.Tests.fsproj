@@ -19,6 +19,7 @@
     <Compile Include="Config.fs" />
     <Compile Include="Adapter.fs" />
     <Compile Include="Service.fs" />
+    <Compile Include="Async.fs" />
   </ItemGroup>
 
   <ItemGroup>
