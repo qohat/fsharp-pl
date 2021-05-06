@@ -2,6 +2,7 @@ module Main.InfraTests
 
 open NUnit.Framework
 open Files
+open AsyncTest
 
 [<TestFixture>]
 type TestClass() =
