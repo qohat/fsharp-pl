@@ -6,6 +6,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\Infra\Files.fs" />
+    <Compile Include="..\Infra\Async.fs" />
     <Compile Include="..\Core\Move.fs" />
     <Compile Include="..\Adapter\Config.fs" />
     <Compile Include="..\Adapter\Adapter.fs" />
