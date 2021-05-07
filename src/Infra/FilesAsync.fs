@@ -2,6 +2,7 @@ module FilesAsync
 
 open System.IO
 open System.Text
+open System.Threading.Tasks
 
     type Folder = { path : string } 
     and File = { filename: string; containingFolder: Folder; lines : string list }
@@ -10,10 +11,31 @@ open System.Text
     let private toFile(filePath: FilePath) (folder: Folder): File =
         {filename = Path.GetFileName(filePath.path); containingFolder = folder; lines = File.ReadAllLines(filePath.path) |> List.ofArray}
 
+    let private readLinesAsync (path: string) (f: byte[] -> 'a) =
+        async {
+            use stream = File.OpenRead(path)
+
+            let! content = stream.AsyncRead(int stream.Length)
+
+            return f content
+        } |> Async.StartAsTask
+
+    let rec readFolderRecursively (path: string) (f: byte[] -> 'a) =
+        seq {
+            for file in Directory.GetFiles(path) do
+                yield readLinesAsync file f
+            
+            for path in Directory.GetDirectories(path) do
+                yield! readFolderRecursively path f
+        }
+
+    let getFilesAsync<'a> (path: string) (f: byte[] -> 'a) =
+    
+
     type FileRW =
-        abstract member Read : FilePath -> File list
-        abstract member Write : File -> unit
-        abstract member Create : Folder -> FilePath
+        abstract member Read : FilePath -> Async<File list>
+        abstract member Write : File -> Async<unit>
+        abstract member Create : Folder -> Async<FilePath>
 
     type MyFileRW() =
         member this.Read fp = (this :> FileRW).Read(fp)
@@ -22,8 +44,12 @@ open System.Text
 
         interface FileRW with
             member this.Read fp = 
-                    Array.map (fun elem -> toFile {path = elem} {path = fp.path}) (Directory.GetFiles(fp.path))
+                async {
+                    let! files = Directory.GetFiles(fp.path)
+                    return Array.map (fun elem -> toFile {path = elem} {path = fp.path}) (Directory.GetFiles(fp.path))
                     |> List.ofArray
+                }
+                    
 
             member this.Create folder = 
                 if Directory.Exists(folder.path) then { path = folder.path } 
