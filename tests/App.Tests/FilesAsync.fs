@@ -15,12 +15,5 @@ type TestClass() =
         |> Async.RunSynchronously
         |> ignore
 
-    [<Test>]
-    member this.TestFilesAsyncRead1() = 
-        Seq.map printTotalFileBytes
-        |> Async.Sequential
-        |> Async.Ignore
-        |> Async.RunSynchronously
-        |> ignore
 
         
