@@ -14,11 +14,9 @@ open System.Threading.Tasks
     let private readLinesAsync (path: string) (f: byte[] -> 'a) =
         async {
             use stream = File.OpenRead(path)
-
             let! content = stream.AsyncRead(int stream.Length)
-
             return f content
-        } |> Async.StartAsTask
+        }
 
     let rec readFolderRecursively (path: string) (f: byte[] -> 'a) =
         seq {
@@ -30,9 +28,17 @@ open System.Threading.Tasks
         }
 
     let getFilesAsync<'a> (path: string) (f: byte[] -> 'a) =
+        readFolderRecursively path f
+            |> Seq.cast<Async<'a>>
     
+    let printTotalFileBytes path =
+        async {
+            let! bytes = File.ReadAllBytesAsync(path) |> Async.AwaitTask
+            let fileName = Path.GetFileName(path)
+            printfn $"File {fileName} has %d{bytes.Length} bytes"
+        }
 
-    type FileRW =
+    (*type FileRW =
         abstract member Read : FilePath -> Async<File list>
         abstract member Write : File -> Async<unit>
         abstract member Create : Folder -> Async<FilePath>
@@ -59,7 +65,7 @@ open System.Threading.Tasks
 
             member this.Write file = 
                 this.Create(file.containingFolder)
-                |> fun _ -> File.WriteAllLines($"{file.containingFolder.path}/{file.filename}", file.lines, Encoding.UTF8)
+                |> fun _ -> File.WriteAllLines($"{file.containingFolder.path}/{file.filename}", file.lines, Encoding.UTF8)*)
 
            
                 
