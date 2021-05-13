@@ -30,13 +30,6 @@ open System.Threading.Tasks
     let getFilesAsync<'a> (path: string) (f: byte[] -> 'a) =
         readFolderRecursively path f
             |> Seq.cast<Async<'a>>
-    
-    let printTotalFileBytes path =
-        async {
-            let! bytes = File.ReadAllBytesAsync(path) |> Async.AwaitTask
-            let fileName = Path.GetFileName(path)
-            printfn $"File {fileName} has %d{bytes.Length} bytes"
-        }
 
     (*type FileRW =
         abstract member Read : FilePath -> Async<File list>
